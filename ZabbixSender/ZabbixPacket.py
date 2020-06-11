@@ -1,4 +1,4 @@
-from datetime import datetime
+import time
 import json
 
 
@@ -10,7 +10,7 @@ class ZabbixPacket:
     def __str__(self):
         return json.dumps(self.packet)
 
-    def add(self, host, key, value, clock=datetime.now().timestamp()):
+    def add(self, host, key, value, clock=time.time()):
         if (isinstance(clock, int)) or (isinstance(clock, float)):
             metric = {'host': str(host),
                       'key': str(key),
